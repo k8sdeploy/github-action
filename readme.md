@@ -11,7 +11,7 @@ this can only be done after deploying the agent in your cluster
 ```yaml
 - name: K8sDeploy
   id: k8sdeploy
-  uses: k8sdeploy/github-action
+  uses: k8sdeploy/github-action@v1
   with:
     service-name: "xxx" # agent
     service-namespace: "xxx" # k8sdeploy
