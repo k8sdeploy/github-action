@@ -17,11 +17,11 @@ inputs:
     description: "K8sDeploy secret"
     required: true
     default: "{{ secrets.K8SDEPLOY_SECRET }}"
-  imageHash:
+  image-hash:
     description: "Hash of image to use"
     required: false
     default: "{{ github.sha }}"
-  imageTag:
+  image-tag:
     description: "Tag of image to use"
     required: false
     default: "{{ github.ref_name }}"

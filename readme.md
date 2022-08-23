@@ -15,8 +15,8 @@ this can only be done after deploying the agent in your cluster
   with:
     service-name: "xxx" # agent
     service-namespace: "xxx" # k8sdeploy
-    imageHash: ${{ github.sha }}
-    imageTag: ${{ github.ref_name }}
+    image-hash: ${{ github.sha }}
+    image-tag: ${{ github.ref_name }}
     k8sdeploy-key: ${{ secrets.K8SDEPLOY_KEY }}
     k8sdeploy-secret: ${{ secrets.K8SDEPLOY_SECRET }}
 ```
