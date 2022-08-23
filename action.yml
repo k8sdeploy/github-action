@@ -1,0 +1,33 @@
+name: "K8sDeploy Trigger Service"
+description: "Kubernetes Deployment Trigger Service"
+inputs:
+  service-name:
+    description: "Name of service inside k8sdeploy dashboard"
+    required: true
+    default: "agent"
+  service-namespace:
+    description: "Namespace of service inside k8sdeploy dashboard"
+    required: true
+    default: "k8sdeploy"
+  k8sdeploy-key:
+    description: "K8sDeploy key"
+    required: true
+    default: "{{ secrets.K8SDEPLOY_KEY }}"
+  k8sdeploy-secret:
+    description: "K8sDeploy secret"
+    required: true
+    default: "{{ secrets.K8SDEPLOY_SECRET }}"
+  imageHash:
+    description: "Hash of image to use"
+    required: false
+    default: "{{ github.sha }}"
+  imageTag:
+    description: "Tag of image to use"
+    required: false
+    default: "{{ github.ref_name }}"
+outputs:
+  trigger-status:
+    description: "If the trigger was successful"
+runs:
+  using: node16
+  main: 'index.js'
