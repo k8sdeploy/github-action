@@ -1,13 +1,12 @@
 # K8sDeploy Github Action
 
-This the github action to be run at the end of an image run so that k8s can direct your agent to pull the latest version
+This the GitHub action to be run at the end of an image run so that k8s can direct your agent to pull the latest version
 and make any other changes you need to the deployment
 
 ## Requirements
-You will need to have created a set of credentials in the [dashboard](https://k8sdeploy.dev/dashboard) before using the action,  
-this can only be done after deploying the agent in your cluster
+You will need to have created a set of credentials in the [dashboard](https://k8sdeploy.dev/dashboard) before using the action.
 
-## Configure your Github action
+## Configure your GitHub action
 ```yaml
 - name: K8sDeploy
   id: k8sdeploy
@@ -19,4 +18,5 @@ this can only be done after deploying the agent in your cluster
     image-tag: ${{ github.ref_name }}
     k8sdeploy-key: ${{ secrets.K8SDEPLOY_KEY }}
     k8sdeploy-secret: ${{ secrets.K8SDEPLOY_SECRET }}
+    k8sdeploy-id: ${{ secrets.K8SDEPLOY_ID }}
 ```

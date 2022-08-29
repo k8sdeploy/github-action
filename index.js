@@ -6,8 +6,9 @@ async function run() {
     try {
         const key = core.getInput('k8sdeploy-key')
         const secret = core.getInput('k8sdeploy-secret')
+        const id = core.getInput('k8sdeploy-id')
 
-        if (key === "dummy-key" && secret === "dummy-secret") {
+        if (key === "dummy-key" && secret === "dummy-secret" && id === "dummy-id") {
             core.setOutput("trigger-status", "success");
             return
         }
@@ -21,7 +22,8 @@ async function run() {
             imageTag: core.getInput('image-tag')
         }, {
             "X-API-KEY": key,
-            "X-API-SECRET": secret
+            "X-API-SECRET": secret,
+            "X-API-ID": id
         })
         core.setOutput('trigger-status', res.result);
     } catch (error) {

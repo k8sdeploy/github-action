@@ -9,6 +9,10 @@ inputs:
     description: "Namespace of service inside k8sdeploy dashboard"
     required: true
     default: "k8sdeploy"
+  k8sdeploy-id:
+    description: "K8sDeploy ID"
+    required: true
+    default: "{{ secrets.K8DEPLOY_ID }}"
   k8sdeploy-key:
     description: "K8sDeploy key"
     required: true
