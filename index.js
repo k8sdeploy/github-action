@@ -15,11 +15,13 @@ async function run() {
 
         let req = new httpClient.HttpClient()
         let res = req.postJson("https://hooks.k8sdeploy.dev/v1/github", {
-            fullPayload: JSON.stringify(github.context.payload, undefined, 2),
-            serviceName: core.getInput('service-name'),
-            serviceNamespace: core.getInput('service-namespace'),
-            imageHash: core.getInput('image-hash'),
-            imageTag: core.getInput('image-tag')
+            data: {
+                fullPayload: JSON.stringify(github.context.payload, undefined, 2),
+                serviceName: core.getInput('service-name'),
+                serviceNamespace: core.getInput('service-namespace'),
+                imageHash: core.getInput('image-hash'),
+                imageTag: core.getInput('image-tag')
+            }
         }, {
             "X-API-KEY": key,
             "X-API-SECRET": secret,
