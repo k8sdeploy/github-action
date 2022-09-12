@@ -16,7 +16,6 @@ function run() {
         if (key === "" || secret === "" || id === "") {
             core.setOutput("trigger-status", "failure");
         }
-        return "fuck you"
 
         let req = new httpClient.HttpClient()
         let res = req.postJson("https://hooks.k8sdeploy.dev/v1/github", {
