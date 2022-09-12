@@ -35,6 +35,4 @@ async function run() {
     }
 }
 
-run().then(() => {
-    console.log("done")
-}
+run()
