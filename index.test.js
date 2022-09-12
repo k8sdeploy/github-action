@@ -9,6 +9,8 @@ test('test runs', () => {
   process.env['INPUT_K8SDEPLOY-SECRET'] = 'dummy-secret';
   process.env['INPUT_K8SDEPLOY-ID'] = 'dummy-id';
 
+  console.log("process.env", process.env)
+
   const f = path.join(__dirname, 'index.js');
   const result = cp.execSync(`node ${f}`, {env: process.env}).toString();
 
