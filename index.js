@@ -13,6 +13,10 @@ async function run() {
             return
         }
 
+        console.log("key", key)
+        console.log("secret", secret)
+        console.log("id", id)
+
         let req = new httpClient.HttpClient()
         let res = req.postJson("https://hooks.k8sdeploy.dev/v1/github", {
                 fullPayload: github.context.payload,
@@ -31,4 +35,6 @@ async function run() {
     }
 }
 
-run()
+run().then(() => {
+    console.log("done")
+}
