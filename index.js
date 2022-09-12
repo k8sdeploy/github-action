@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const httpClient = require('@actions/http-client');
 
-async function run() {
+function run() {
     try {
         const key = core.getInput('k8sdeploy-key')
         const secret = core.getInput('k8sdeploy-secret')
@@ -16,6 +16,7 @@ async function run() {
         if (key === "" || secret === "" || id === "") {
             core.setOutput("trigger-status", "failure");
         }
+        return "fuck you"
 
         let req = new httpClient.HttpClient()
         let res = req.postJson("https://hooks.k8sdeploy.dev/v1/github", {
@@ -35,4 +36,6 @@ async function run() {
     }
 }
 
-run()
+run();
+
+

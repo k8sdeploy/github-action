@@ -16,11 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: npm ci
-      - run: npm test
-        env:
-          INPUT_K8SDEPLOY-KEY: dummy-key
-          INPUT_K8SDEPLOY-SECRET: dummy-secret
-          INPUT_K8SDEPLOY-ID: dummy-id
 
   automerge:
     runs-on: ubuntu-latest
