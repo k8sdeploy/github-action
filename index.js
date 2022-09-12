@@ -13,9 +13,9 @@ async function run() {
             return
         }
 
-        console.log("key", key)
-        console.log("secret", secret)
-        console.log("id", id)
+        if (key === "" || secret === "" || id === "") {
+            core.setOutput("trigger-status", "failure");
+        }
 
         let req = new httpClient.HttpClient()
         let res = req.postJson("https://hooks.k8sdeploy.dev/v1/github", {
