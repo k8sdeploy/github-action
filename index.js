@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const httpClient = require('@actions/http-client');
 
-async function run() {
+function run() {
     try {
         const key = core.getInput('k8sdeploy-key')
         const secret = core.getInput('k8sdeploy-secret')
@@ -11,6 +11,10 @@ async function run() {
         if (key === "dummy-key" && secret === "dummy-secret" && id === "dummy-id") {
             core.setOutput("trigger-status", "success");
             return
+        }
+
+        if (key === "" || secret === "" || id === "") {
+            core.setOutput("trigger-status", "failure");
         }
 
         let req = new httpClient.HttpClient()
@@ -31,4 +35,6 @@ async function run() {
     }
 }
 
-run()
+run();
+
+
