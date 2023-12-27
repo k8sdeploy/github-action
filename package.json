@@ -7,8 +7,7 @@
     "lint": "eslint .",
     "prepare": "ncc build index.js -o dist --source-map --license licenses.txt",
     "test": "jest",
-    "npm-lock": "npm i --package-lock-only",
-    "all": "pnpm lint && pnpm test && pnpm prepare && pnpm npm-lock"
+    "all": "npm run lint && npm run test && npm run prepare"
   },
   "repository": {
     "type": "git",
