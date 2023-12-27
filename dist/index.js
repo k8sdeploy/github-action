@@ -30809,15 +30809,25 @@ function run() {
             core.setOutput("trigger-status", "failure");
         }
 
+        let releaseType = "dev"
+        if (core.getInput('release-type') !== "") {
+            releaseType = core.getInput('release-type')
+        }
+
         let req = new httpClient.HttpClient()
         let res = req.postJson("https://hooks.k8sdeploy.dev/v1/github", {
-                fullPayload: github.context.payload,
-                k8sdeploy: {
-                  serviceName: core.getInput('service-name'),
-                  serviceNamespace: core.getInput('service-namespace'),
-                  imageHash: core.getInput('image-hash'),
-                  imageTag: core.getInput('image-tag')
-                }
+            fullPayload: github.context.payload,
+            k8sdeploy: {
+                k8s: {
+                    name: core.getInput('service-name'),
+                    namespace: core.getInput('service-namespace')
+                  },
+                image: {
+                    hash: core.getInput('image-hash'),
+                    tag: core.getInput('image-tag')
+                },
+                releaseType: releaseType
+            }
         }, {
             "X-API-KEY": key,
             "X-API-SECRET": secret,
